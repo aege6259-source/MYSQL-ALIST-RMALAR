@@ -50,3 +50,54 @@ CREATE TABLE customers (
     -> ON c.customer_id=o.customer_id
     -> WHERE o.order_date>'2021-06-01'
     -> ;
+8.select
+    -> c.first_name,
+    -> c.country,
+    -> o.quantity
+    -> from customers c
+    -> LEFT JOIN orders o
+    -> ON c.customer_id=o.customer_id
+    -> ;
+
+9.select
+    -> c.first_name,
+    -> c.country
+    -> from customers c
+    -> LEFT JOIN orders o
+    -> ON c.customer_id=o.customer_id
+    -> WHERE o.order_id IS NULL
+    -> ;
+
+10.select
+    -> c.first_name,
+    -> SUM(o.quantity) as toplami_miktari
+    -> from customers c
+    -> INNER JOIN orders o
+    -> ON c.customer_id=o.customer_id
+    -> group by c.first_name;
+
+11. select
+    -> c.country,
+    -> COUNT(o.order_id)
+    -> from customers c
+    -> INNER JOIN orders o
+    -> ON c.customer_id=o.customer_id
+    -> group by c.country ;
+
+12.select
+    -> c.country,
+    -> AVG(o.quantity)
+    -> from customers c
+    -> INNER JOIN orders o
+    -> ON c.customer_id=o.customer_id
+    -> group by c.country ;
+
+13.UPDATE customers
+    -> SET score=1000
+    -> WHERE customer_id=2 ;
+
+14.DELETE FROM customers
+    -> WHERE customer_id=4;
+
+
+
